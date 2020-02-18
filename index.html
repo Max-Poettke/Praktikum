@@ -32,8 +32,12 @@ button:active {
         </style>
         <title>My first HTML page</title>
     </head>
-<body style="background-color: beige;">
+<body style="background-color: beige;" id="mybody">
 
+    <div style="background-color: red; position:absolute; left:10px; top:10px; width:100px; height:100px;" id="square">Test</div>
+    <div style="background-color: blue; position:absolute; left:200px; top:400px; width:100px; height:20px;" id="square2">Test</div>
+
+    <button id="Move" onclick="startLoop()">Move me!</button>
     <h1> My <span style="border: 3px solid black;">first</span> Heading</h1>
     <h2 style="text-align: center;">This is Heading <small>2</small></h2>
     <p>This is the content of Heading 2</p>
@@ -66,5 +70,64 @@ button:active {
             <li>Get Coffee</li>
             <li>Somehow survive the day</li>
         </ul>
+
+
+        <script>
+
+            var lastMouseX = 0;
+            var lastMouseY = 0;
+
+            var newLeft = 100;
+            var newTop = 10;
+            var newHeight = 100;
+            var newVelocityX = 5;
+            var newVelocityY = 2;
+            document.getElementById("mybody").onmousemove = mousemoved;
+            function startLoop(){
+                window.setInterval(move, 10)
+            }
+            function move(){
+                newLeft = newLeft+newVelocityX;
+                newTop = newTop + newVelocityY;
+                if(newLeft>500) {
+                    newVelocityX = -Math.random()*20;
+                }
+                if(newLeft<5) {
+                    newVelocityX = Math.random()*20;
+                }
+                if(newTop>300) {
+                    if(newLeft<lastMouseX-150 || newLeft > lastMouseX +50) {
+                        newHeight = newHeight -5;
+                        if(newHeight==0) newHeight=100;
+                        document.getElementById("square").style.height = newHeight + "px";
+                        document.getElementById("square").style.backgroundColor = "red";
+                    } else {
+                        document.getElementById("square").style.backgroundColor = "green";
+                    }
+
+                    newVelocityY = -Math.random()*20;
+                }
+                if(newTop<5) {
+                    newVelocityY = Math.random()*8;
+                }
+
+
+                document.getElementById("square").style.left = newLeft + "px";
+                document.getElementById("square").style.top = newTop + 100 - newHeight + "px";
+            }
+            
+            function mousemoved(mouseEvent) {
+
+                if(!mouseEvent)return;
+                document.getElementById("square2").style.left = mouseEvent.clientX - 50 + "px";
+                lastMouseX = mouseEvent.clientX;
+                lastMouseY = mouseEvent.clientY;
+                // document.getElementById("square2").style.top = mouseEvent.clientY + "px";
+
+
+            }
+        </script>
+
 </body>
+
 </html>
