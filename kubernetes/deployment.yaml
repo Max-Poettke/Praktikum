@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: praktikum-max-deployment
+  labels:
+    app: praktikum-max
+spec:
+  selector:
+    matchLabels:
+      app: praktikum-max
+  template:
+    metadata:
+      labels:
+        app: praktikum-max
+    spec:
+      containers:
+      - name: tutorial
+        image: maxpoettke/tutorial:v1
+        ports:
+        - containerPort: 80
