@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: tutorial
-        image: maxpoettke/tutorial:v1
+        image: maxpoettke/tutorial:v3
         ports:
         - containerPort: 80
