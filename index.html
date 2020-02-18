@@ -2,6 +2,18 @@
 <html>
     <head>
         <style>
+            .Max {
+                background-color: aquamarine;
+            }
+            a:visited {
+                color: white;
+            }
+            a:link {
+                color: white;
+                background-color: blue;
+                padding: 5px 15px;
+                text-decoration: none;
+            }
             h1 {
                 color: blue;
                 font-family: 'Courier New', Courier, monospace;
@@ -25,13 +37,14 @@ button:active {
     <h1> My first Heading</h1>
     <h2 style="text-align: center;">This is Heading <small>2</small></h2>
     <p>This is the content of Heading 2</p>
+    <a class="Max" href="#Poem">Jump to the Poem</a>
     <hr>
     <h3 style="text-align: center;">This is Heading 3</h3>
         <p title="I am secretely a tooltip.">My second paragraph</p>
         <p style="color: red;">This is... <br> another paragraph</p>
         <img src="sth" alt="Sth else"> 
         <br>
-        <pre style="background-color: azure;text-align: center;"> <i>
+        <pre id="Poem" style="background-color: azure;text-align: center;"> <i>
             My Poem to thee,
             shall end without glee.
             My Poem shant stand,
